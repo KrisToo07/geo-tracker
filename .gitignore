@@ -40,3 +40,6 @@ next-env.d.ts
 
 # stray build cache
 /.next.stale/
+
+# private sales doc (names prospects)
+OUTREACH.md
