@@ -37,3 +37,6 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# stray build cache
+/.next.stale/
