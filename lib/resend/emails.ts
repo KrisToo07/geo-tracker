@@ -2,6 +2,11 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Sender address. Resend rejects unverified domains, so this MUST be a domain you own and have
+// verified in Resend (set EMAIL_FROM once you do). Until then it falls back to Resend's shared
+// onboarding sender, which works out of the box (test mode only sends to your own address).
+const FROM = process.env.EMAIL_FROM || 'GEO Tracker <onboarding@resend.dev>';
+
 export async function sendScoreDropAlert({
   to, brandName, previousScore, currentScore, scanUrl,
 }: {
@@ -9,7 +14,7 @@ export async function sendScoreDropAlert({
   currentScore: number; scanUrl: string;
 }) {
   await resend.emails.send({
-    from: 'GEO Tracker <alerts@geotracker.app>',
+    from: FROM,
     to,
     subject: `⚠️ ${brandName} visibility dropped to ${currentScore.toFixed(0)}`,
     html: `
@@ -35,7 +40,7 @@ export async function sendNotMentionedAlert({
   to: string; brandName: string; llmProvider: string; keyword: string; scanUrl: string;
 }) {
   await resend.emails.send({
-    from: 'GEO Tracker <alerts@geotracker.app>',
+    from: FROM,
     to,
     subject: `🔍 ${brandName} not mentioned for "${keyword}" on ${llmProvider}`,
     html: `
