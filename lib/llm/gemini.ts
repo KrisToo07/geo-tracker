@@ -14,7 +14,7 @@ Be comprehensive and mention specific brands when relevant. Provide balanced, in
 
 export async function queryGemini(keyword: string): Promise<string> {
   const model = getGenAI().getGenerativeModel({
-    model: 'gemini-2.0-flash',
+    model: 'gemini-2.5-flash',
     systemInstruction: GEMINI_SYSTEM,
   });
   const result = await model.generateContent(keyword);
