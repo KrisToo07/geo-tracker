@@ -73,6 +73,16 @@ customer's plan after they pay.
 
 ---
 
+## 4b. (Optional) Enable "Continue with Google"
+The Google button is hidden until you configure OAuth — email/password works without it.
+To turn it on:
+1. **Google Cloud** → APIs & Services → Credentials → Create OAuth client ID (Web). Authorized
+   redirect URI: `https://ilubszxuqlrptbrvxjdz.supabase.co/auth/v1/callback`
+2. **Supabase** → Authentication → Providers → **Google** → enable, paste the Client ID + Secret.
+3. **Supabase** → Authentication → URL Configuration → add `https://geo-tracker-rouge.vercel.app/**`
+   to redirect URLs, set Site URL to your production URL.
+4. In Vercel, set `NEXT_PUBLIC_GOOGLE_AUTH_ENABLED=true` and redeploy — the button reappears.
+
 ## 5. Go live
 
 1. Run `node scripts/setup-stripe.mjs` again with your **`sk_live_`** key → new live price IDs.
