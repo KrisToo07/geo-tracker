@@ -1,0 +1,169 @@
+[
+  {
+    "slug": "what-is-generative-engine-optimization",
+    "title": "What Is Generative Engine Optimization (GEO)?",
+    "description": "Generative Engine Optimization (GEO) is the practice of making your brand show up in answers from ChatGPT, Perplexity, and Gemini. Here's how it works.",
+    "sections": [
+      {
+        "heading": "GEO in one sentence",
+        "body": "Generative Engine Optimization (GEO) is the practice of improving how often, and how accurately, an AI assistant mentions your brand when someone asks it a relevant question.\n\nWhen a potential customer types \"what's the best project management tool for a small design agency\" into ChatGPT, the model returns a short list of names and a sentence or two about each. GEO is the work of making sure your name is on that list, described correctly, for the questions your buyers actually ask. It's answer-space visibility rather than link-space visibility."
+      },
+      {
+        "heading": "Why this matters now",
+        "body": "Search behavior is splitting. A growing share of buying research happens inside ChatGPT, Perplexity, Gemini, and Google's AI Overviews, where the user often reads a synthesized answer and never clicks through to a website at all.\n\nThat changes the stakes. In classic search, ranking #4 still gets you a click and a chance to convince. In an AI answer, there is often no #4. The assistant names two or three tools and moves on. If you're not in that handful, you're invisible for that query, and you usually won't even see it happen because there's no impression showing up in your analytics."
+      },
+      {
+        "heading": "How GEO differs from SEO",
+        "body": "SEO optimizes a page to rank in a list of blue links for a keyword. GEO optimizes how a model talks about you across many phrasings of a question. The unit of success shifts from \"ranked URL\" to \"mentioned entity,\" and the query shifts from short keywords to full natural-language questions.\n\nThe feedback loop is different too. SEO gives you rank positions you can look up. AI answers are non-deterministic: ask the same question twice and you may get slightly different names, ordering, or descriptions. There's no public leaderboard, so you can't see your GEO standing unless you deliberately query the engines and record what comes back.\n\nThe overlap is real, though. Models lean heavily on the open web, third-party review sites, and structured, well-explained content. Good SEO fundamentals feed GEO, but they don't guarantee it."
+      },
+      {
+        "heading": "What actually influences whether a model recommends you",
+        "body": "Nobody outside the labs has the exact recipe, and anyone claiming a guaranteed formula is guessing. But the observable patterns are consistent. Models tend to name brands that are described clearly and consistently across many independent sources, not just your own site.\n\nThat means third-party coverage matters a lot: review platforms, comparison articles, Reddit and forum threads, directories, and reputable publications. It helps when your own content states plainly what you do, who you're for, and how you compare, in language that answers the question directly rather than burying it in marketing copy. Perplexity and Gemini also cite live sources, so fresh, accurate, crawlable pages carry weight. Wrong or outdated facts about you circulating online can actively hurt, because the model repeats them."
+      },
+      {
+        "heading": "How to measure GEO (you can't improve what you can't see)",
+        "body": "GEO without measurement is guesswork. The baseline practice is to build a list of the real questions your buyers ask, run them through each engine, and record whether you're mentioned, where in the answer, how you're described, and which competitors show up beside you.\n\nDo this repeatedly over time, because answers drift as models update and as the web around you changes. A one-off check tells you today's snapshot; a tracked series tells you whether your GEO efforts are actually moving anything. This is the specific problem GEO Tracker was built for: running your brand's questions across ChatGPT, Perplexity, and Gemini and logging how recommendations change week to week. You can do a version of it by hand in a spreadsheet, but the manual approach gets tedious fast once you're covering dozens of questions across three engines."
+      },
+      {
+        "heading": "A realistic way to start",
+        "body": "You don't need a full program to begin. Pick ten questions a potential customer would genuinely ask an AI assistant about your category. Ask each one in ChatGPT, Perplexity, and Gemini, and honestly note whether you appear and how you're described.\n\nThat single exercise usually surfaces something uncomfortable and useful: a competitor that shows up everywhere, a flat-out wrong description of what you do, or total absence on a question you'd expect to own. That's your starting map.\n\nIf you'd rather see the baseline without the manual grind, GEO Tracker can run a free scan of your brand across all three engines and show you where you stand today. Either way, measure first. The insight from seeing your actual answers is worth more than any general GEO advice, including this article."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-get-recommended-by-chatgpt",
+    "title": "How to Get Your Brand Recommended by ChatGPT",
+    "description": "A practical guide to getting your brand named when people ask ChatGPT, Perplexity, and Gemini for recommendations. Honest tactics, no hacks.",
+    "sections": [
+      {
+        "heading": "Why ChatGPT Recommends Some Brands and Ignores Others",
+        "body": "When someone asks ChatGPT for \"the best project management tool for a small agency,\" the model isn't running an ad auction or pulling from a ranked list it maintains. It's assembling an answer from two things: what it absorbed during training, and what it can retrieve live from the web when browsing is on. Both come down to the same underlying signal — how often, how clearly, and how credibly your brand shows up in the text these models learned from or can read right now.\n\nThat means there's no button to press and no one to pay for placement. A brand gets recommended because it has become a well-described, frequently-cited entity in the sources language models trust. The good news: those sources are mostly public, and the work to show up in them is real content and PR work, not a trick. This article covers the tactics that actually move the needle, and the ones that waste your time."
+      },
+      {
+        "heading": "Be a Citable Source, Not Just a Marketing Page",
+        "body": "Language models reward pages that answer a question completely and can be quoted without embarrassment. A landing page that says \"the smartest way to manage your team\" gives a model nothing to cite. A page that says \"For teams under 20 people, Tool X costs $8/user/month, supports Gantt charts, and integrates with Slack and GitHub\" gives it a specific, attributable fact.\n\nWrite the pages you'd want an AI to quote when someone asks about your category. Comparison pages, honest pros-and-cons, pricing explained in plain numbers, and \"best tool for X use case\" guides all get pulled into answers because they contain extractable facts. Include your own limitations too — models (and readers) trust sources that acknowledge tradeoffs, and it makes you the natural pick for the specific segment you actually serve best."
+      },
+      {
+        "heading": "Get Named in the Sources Models Actually Read",
+        "body": "Your own website is one input, but the higher-leverage moves happen off it. When ChatGPT or Perplexity answer a recommendation query, they lean heavily on third-party sources: roundup articles (\"10 best X tools\"), Reddit and forum threads, review sites like G2 or Capterra, Wikipedia, and reputable publications in your niche.\n\nSo the work is old-fashioned earned presence. Pitch to be included in the listicles that already rank for your category. Earn genuine reviews on the sites your buyers trust. Participate honestly in the communities where your product comes up — not with spam, but with useful answers that get upvoted and, over time, quoted. If a well-regarded human-curated list names you, models are far more likely to name you too, because that's exactly the kind of source they weigh."
+      },
+      {
+        "heading": "Structure Content So Machines Can Parse It",
+        "body": "Retrieval systems and the models reading your pages both prefer content that's easy to segment. Use clear H2/H3 headings that match how people phrase questions, lead paragraphs that state the answer before the elaboration, and lists or tables for anything comparative. A tidy table of features and prices is dramatically easier for a model to lift accurately than the same information buried in prose.\n\nAdd structured data where it fits — Organization, Product, FAQ, and Review schema help machines understand what your entity is and what facts attach to it. Keep the important claims in text, not locked inside images or PDFs a crawler may skip. None of this is a ranking hack; it's just removing friction between your facts and the systems trying to read them."
+      },
+      {
+        "heading": "Keep Your Name, Category, and Facts Consistent Everywhere",
+        "body": "Models build an internal picture of your brand as an entity, and inconsistency blurs that picture. If you're \"Acme\" on your homepage, \"Acme Inc.\" on LinkedIn, and \"Acme Software Solutions\" on G2, you've split your reputation across three fuzzy entities instead of building one strong one.\n\nPick one canonical name, one crisp category description, and consistent core facts (what you do, who you're for, key features, pricing model), then use them verbatim across your site, social profiles, directories, and press. The tighter and more repeated your description, the more confidently a model can say \"if you want X, consider Acme\" — because that association shows up the same way across dozens of sources it has seen."
+      },
+      {
+        "heading": "Measure It, Because You Can't See It From Your Analytics",
+        "body": "Here's the awkward part: none of this shows up in Google Analytics. A user can ask ChatGPT for a recommendation, get your name, and buy from you without a single tracked referral. So you're flying blind unless you deliberately check what the models say.\n\nThe practical method is to test the real questions your buyers ask — \"best CRM for freelancers,\" \"alternatives to [competitor]\" — across ChatGPT, Perplexity, and Gemini, and record whether you're named, how you're described, and which sources get cited. Do it monthly, because model updates and shifting sources change the answers over time. Watching the trend tells you whether your content and PR work is actually landing."
+      },
+      {
+        "heading": "See Where You Stand Today",
+        "body": "If you're curious whether the three big engines already recommend you — and how you're described when they do — GEO Tracker runs a free scan of your brand across ChatGPT, Perplexity, and Gemini and shows you the answers side by side. It's a fast way to get a baseline before you invest in any of the work above.\n\nEven if you never sign up, the tactics here stand on their own: be genuinely citable, earn presence in the sources models read, structure your facts cleanly, and stay consistent. Do that well and getting recommended stops being a mystery and becomes a byproduct of good, honest visibility."
+      }
+    ]
+  },
+  {
+    "slug": "ai-search-is-replacing-google",
+    "title": "AI Search Is Replacing Google — Is Your Brand Ready?",
+    "description": "AI answers now recommend one brand instead of ten links. Here's what the shift means for discovery — and how to find out where your brand actually stands.",
+    "sections": [
+      {
+        "heading": "The Ten Blue Links Are Quietly Disappearing",
+        "body": "For twenty years, search meant a list of options. You typed a query, Google returned ten links, and you decided which to trust. That format trained an entire discipline: rank on page one, earn the click, win the customer. The click was the whole game.\n\nAI search changes the unit of output. Ask ChatGPT for \"the best project management tool for a small agency\" and you don't get ten links — you get a paragraph naming two or three products, with reasons. Perplexity and Google's AI Overviews do the same. The answer is synthesized, opinionated, and often the only thing the user reads. There is no page two to fight your way onto because there is frequently no page at all.\n\nThis isn't a prediction about the far future. It's already how a growing share of people research purchases, compare vendors, and shortlist tools — before they ever visit a website or fill out a form."
+      },
+      {
+        "heading": "Being Recommended Is Not the Same as Ranking",
+        "body": "Traditional SEO optimizes for position: where you sit in a list of links. AI search optimizes for inclusion: whether the model names you at all when someone describes their problem in plain language.\n\nThose are different outcomes with different mechanics. You can rank #3 for a keyword and still be absent from every AI answer about that same topic — because the model isn't matching keywords, it's assembling a response from what it has read about you across the web: your own pages, review sites, comparison articles, forums, documentation, and press. If those sources are thin, outdated, or contradictory, the model has little to draw on and quietly leaves you out.\n\nThe practical shift for marketers is this: your job is no longer only to be findable. It's to be describable. The model needs a clear, consistent story about who you're for and what you do well, told in enough places that it treats that story as fact."
+      },
+      {
+        "heading": "Why This Is Hard to See — and Easy to Ignore",
+        "body": "The danger of this transition is that it's invisible in your existing dashboards. Google Analytics shows you clicks that happened. It cannot show you the ChatGPT conversation where a user asked for a recommendation, got three competitor names, picked one, and never searched for you at all. That customer simply never appears.\n\nSo the loss is silent. Traffic dips get blamed on seasonality or algorithm updates, while the real story — that an AI engine is now the first filter and you're not passing through it — goes unmeasured. You can't fix a funnel leak you can't see.\n\nThis is why the first move isn't to overhaul your content. It's to get honest visibility into what these engines actually say about you today. You need a baseline before you can tell whether anything you do is working."
+      },
+      {
+        "heading": "The Answer Also Changes Depending on Who's Asking",
+        "body": "One more wrinkle: AI answers aren't fixed. Ask the same question three ways — \"best CRM for startups,\" \"affordable CRM for a two-person team,\" \"CRM that integrates with Gmail\" — and you may get three different sets of recommended brands. Ask ChatGPT versus Perplexity versus Gemini and the lists can diverge again, because each engine draws on different sources and training.\n\nThat means \"are we recommended?\" isn't a yes-or-no question. It's a matrix: which engine, for which phrasing, in which category, compared to which competitors. A brand can dominate one engine's answer and be completely absent from another's.\n\nChecking this manually is tedious and unreliable — you'd have to run dozens of prompts across three tools and eyeball the results, which also drift over time. This is the specific problem tools like GEO Tracker exist to handle: running your key questions across ChatGPT, Perplexity, and Gemini on a schedule so you can see the full picture instead of a lucky single check."
+      },
+      {
+        "heading": "What Actually Moves the Needle",
+        "body": "Once you know where you stand, the levers are more concrete than \"do generative engine optimization.\" Make sure your own site states plainly who you serve and what you do — models struggle to recommend a brand that describes itself in vague slogans. Get named accurately on the third-party sources these engines trust: review platforms, credible comparison articles, and category roundups in your space.\n\nConsistency matters more than volume. If your positioning says one thing on your homepage, another on a review site, and a third in an old press release, the model gets a muddled signal and hedges by leaving you out. Pick a clear description of your ideal customer and use of case, and reinforce it everywhere.\n\nThen re-measure. Because answers shift as engines update and as competitors publish, this is a tracking problem, not a one-time audit. What you're watching for over weeks is directional: are you getting named more often, for more of the phrasings that matter, against the competitors you care about?"
+      },
+      {
+        "heading": "Find Out Where You Stand — Free",
+        "body": "You don't need to commit to a strategy before you know the facts. The cheapest, highest-value first step is simply to see what ChatGPT, Perplexity, and Gemini say when someone asks for a recommendation in your category — and whether your name comes up at all.\n\nGEO Tracker runs a free scan that checks your brand across all three engines and shows you exactly where you appear, where you don't, and who's being recommended instead. Even if you never sign up for anything after that, you'll walk away knowing your real starting position — which is more than your analytics can currently tell you.\n\nRun the free scan, read the results, and decide from there. It takes a few minutes and turns an invisible risk into something you can actually act on."
+      }
+    ]
+  },
+  {
+    "slug": "how-to-appear-in-perplexity-answers",
+    "title": "How to Get Your Brand Cited in Perplexity",
+    "description": "A practical guide to how Perplexity picks its sources and the concrete steps you can take to earn citations for your brand in AI answers.",
+    "sections": [
+      {
+        "heading": "How Perplexity Actually Builds an Answer",
+        "body": "Perplexity is not a chatbot answering from memory. For most queries it runs a live search, pulls a handful of pages, and writes a synthesized answer with numbered citations pointing back to those pages. Understanding this pipeline is the whole game: if your content is not in the set of pages it retrieves, you cannot be cited, no matter how good your brand is.\n\nThe retrieval step leans heavily on conventional web search signals plus Perplexity's own index. That means the same things that get you ranked for a query—relevance, freshness, crawlability, and topical authority—are the things that get you into the candidate pool. The generation step then decides which of those pages to actually quote, based on how directly they answer the specific question the user asked."
+      },
+      {
+        "heading": "What Perplexity Rewards When It Chooses Citations",
+        "body": "Once pages are retrieved, Perplexity favors sources that answer the question cleanly and verifiably. Content that states a claim plainly, backs it with a number or a named example, and does so in the first paragraph tends to get pulled in over content that buries the answer under introductions.\n\nSpecificity beats breadth. A page titled 'Average CAC for B2B SaaS in 2025' with a clear figure will out-cite a generic 'Guide to SaaS Metrics.' Perplexity is stitching together an answer sentence by sentence, so it rewards pages that supply a quotable, self-contained fact for the exact sub-question at hand.\n\nSource diversity also matters. Perplexity typically cites several different domains per answer rather than three pages from one site. Being one credible voice among many—mentioned on third-party sites, not just your own—raises the odds you show up."
+      },
+      {
+        "heading": "Make Your Content Machine-Retrievable First",
+        "body": "None of the above helps if Perplexity can't cleanly fetch your page. Confirm your important pages are server-rendered or pre-rendered so the content exists in the initial HTML, not only after JavaScript runs. Keep them out of robots.txt blocks, avoid aggressive bot walls that return challenges to non-Google crawlers, and make sure key facts live in text rather than inside images or PDFs.\n\nStructure helps the model parse you. Use descriptive H2s phrased the way people ask questions, short answer-first paragraphs, and clear tables for comparisons or specs. A concise summary near the top of the page gives Perplexity a clean block to quote. This is ordinary technical hygiene, but it's the difference between being retrievable and being invisible."
+      },
+      {
+        "heading": "Earn Mentions on the Pages Perplexity Already Trusts",
+        "body": "For competitive queries, Perplexity often cites review sites, comparison articles, community threads, and established publications before it cites a vendor's own homepage. So a large part of getting cited is off-site: being present, accurately described, and well-reviewed on the third-party pages that rank for your category.\n\nPractically, that means keeping your listings and profiles current on the roundup and 'best X tools' pages in your space, encouraging genuine reviews on the platforms that matter, and participating honestly in relevant Reddit and forum discussions where your category is debated. When several independent sources describe your brand consistently, Perplexity has more reason to surface and trust it."
+      },
+      {
+        "heading": "Target the Questions, Not Just the Keywords",
+        "body": "Perplexity users type full questions and follow-ups, so the unit of optimization is the question, not the head keyword. Build a list of the real questions buyers ask about your category—'is X worth it,' 'X vs Y,' 'how much does X cost,' 'best X for small teams'—and make sure a specific, well-sourced page answers each one directly.\n\nComparison and pricing questions are especially high-leverage because they're common in Perplexity and often decide purchases. If a prospect asks Perplexity 'best tools for [your category],' you want to be one of the named options with a fair description. That only happens if the underlying web content that Perplexity reads actually includes you."
+      },
+      {
+        "heading": "Measure Whether It's Working",
+        "body": "The hard part of AI visibility is that it's invisible unless you check. The same prompt can return different sources on different days, so a one-time look tells you little. Build a small set of the questions your buyers actually ask, run them in Perplexity regularly, and record whether you're cited, where in the answer, and who's cited alongside you.\n\nDo this manually with a spreadsheet, or use a tool built for it—GEO Tracker runs these prompts across Perplexity, ChatGPT, and Gemini on a schedule and tracks how your citations change over time. Either way, treat it like rank tracking: the point is to see movement after you ship content changes, so you know what's earning citations and what isn't."
+      },
+      {
+        "heading": "See Where You Stand Today",
+        "body": "Before you invest in any of this, it's worth knowing your starting point. Pick five questions a real customer would ask about your category and check whether Perplexity, ChatGPT, and Gemini mention you—and who they mention instead.\n\nIf you'd rather not run them by hand, GEO Tracker offers a free scan that checks your brand across all three engines and shows where you're cited and where you're missing. It's a fast way to turn AI visibility from a guess into a baseline you can actually improve against."
+      }
+    ]
+  },
+  {
+    "slug": "geo-vs-seo",
+    "title": "GEO vs SEO: The Difference and Why Both Matter",
+    "description": "SEO gets you ranked on Google. GEO gets you recommended by ChatGPT, Perplexity, and Gemini. Here's how they differ, where they overlap, and why you need both.",
+    "sections": [
+      {
+        "heading": "Two different questions your marketing has to answer",
+        "body": "Search engine optimization (SEO) answers one question: when someone types a query into Google, does your page show up in the results? Generative engine optimization (GEO) answers a different one: when someone asks ChatGPT, Perplexity, or Gemini a question, does the model mention or recommend your brand in its answer?\n\nThose sound similar, but the mechanics are not the same. SEO is about earning a position in a ranked list of ten blue links a person then clicks through. GEO is about being included in a synthesized answer the person often never clicks past. One competes for a slot on a page; the other competes for a sentence inside a generated response.\n\nBoth matter now because buyer behavior has split. A prospect might Google \"best CRM for small agencies,\" then open a new tab and ask ChatGPT the exact same thing to sanity-check what they found. If you win the first and lose the second, you look absent at the moment of comparison."
+      },
+      {
+        "heading": "What SEO optimizes for",
+        "body": "Traditional SEO is a fairly well-understood system. You target keywords with real search demand, publish pages that match the intent behind those keywords, and earn signals that tell Google your page deserves to rank: relevant content, a sound site structure, page speed, mobile usability, and backlinks from credible sites.\n\nThe feedback loop is measurable and public. You can see your keyword rankings, your click-through rate, and your organic traffic in tools you already use. When something moves, you can usually trace why. The currency is position and clicks, and the destination is your own website, where you control the experience and the conversion path.\n\nSEO is not going away. People still search Google billions of times a day, and a strong organic presence is still one of the cheapest durable acquisition channels a business can build. GEO does not replace this. It sits on top of it."
+      },
+      {
+        "heading": "What GEO optimizes for",
+        "body": "GEO optimizes for being the answer, not a link to the answer. When an AI engine responds to a question, it pulls from its training data and, increasingly, from live web results it retrieves at query time. Your goal is to be the source it draws from and the brand it names.\n\nThe inputs overlap with SEO but are not identical. Being crawlable and well-structured helps, because retrieval-augmented engines like Perplexity and Google's AI answers cite live pages. But models also weight clear, factual, quotable content, third-party mentions across the web (review sites, forums, comparison articles, Reddit), and consistent descriptions of what you do and who you serve. A page that ranks fifth on Google can still be the source an AI quotes, and a brand with no page at all can get recommended because it is discussed everywhere else.\n\nThe hard part is visibility into the outcome. There is no rank tracker built into ChatGPT. Answers vary by phrasing, by model, and over time. This is the specific problem GEO Tracker exists to solve: it runs your brand-relevant prompts across ChatGPT, Perplexity, and Gemini and records whether you get mentioned, so you are measuring the outcome instead of guessing at it."
+      },
+      {
+        "heading": "Where the two overlap",
+        "body": "The good news is that a lot of solid SEO work pays off in GEO too. Clean information architecture, fast crawlable pages, accurate structured data, and genuinely useful content all make you easier for both a search crawler and an AI retriever to find and understand. If your fundamentals are strong, you start ahead.\n\nEarned authority overlaps as well. Backlinks and brand mentions that help you rank on Google also make you more likely to be named by a model, because both systems treat being referenced by credible sources as a signal of trust. Writing clearly and answering real questions directly serves both audiences, human and machine.\n\nSo GEO is not a separate content operation you build from zero. It is often the same raw material, evaluated by a different judge with different tastes."
+      },
+      {
+        "heading": "Where they genuinely diverge",
+        "body": "The divergences are where GEO earns its own name. First, no clicks. An AI answer can influence a purchase without ever sending a visitor to your site, which means your analytics may show nothing while your brand is quietly winning or losing the recommendation. Traffic is no longer a complete scoreboard.\n\nSecond, non-determinism. Google returns a stable ranked page you can screenshot and track. Ask an AI the same question twice and you may get two different answers, with different brands named. GEO is a distribution of outcomes, not a fixed position, so it has to be sampled repeatedly rather than checked once.\n\nThird, the competitive set shifts. In an AI answer you are not just fighting for rank against other websites; you are fighting to be one of the two or three brands the model bothers to name at all. Being on page one is table stakes; being mentioned is the win. That is a narrower door."
+      },
+      {
+        "heading": "How to think about doing both",
+        "body": "Treat SEO as your foundation and GEO as the layer that tells you whether that foundation is translating into AI recommendations. Keep doing the SEO work that earns rankings and authority, because it feeds both systems. Then add a GEO practice on top: identify the questions your buyers actually ask AI engines, check who gets recommended for them, and find the gap between where you rank and where you get named.\n\nThe practical move is to close that gap deliberately. If competitors are named and you are not, look at what the model is citing: comparison pages, review sites, community threads, documentation. Those are the sources shaping the answer, and they are where earned presence moves the needle. This is usually PR and content work you already know how to do, pointed at a new target.\n\nDon't try to optimize what you can't see. Before changing anything, get a baseline of how the three major engines currently talk about you."
+      },
+      {
+        "heading": "See where your brand stands today",
+        "body": "You can't improve your AI visibility until you know what these engines actually say when someone asks about your category. Most brands have never checked, and the answers are often surprising, sometimes flattering, sometimes just wrong.\n\nGEO Tracker runs a free scan of your brand across ChatGPT, Perplexity, and Gemini and shows you where you get recommended, where a competitor gets named instead, and where you're simply absent. It takes a few minutes and costs nothing, and even if you never come back, you'll walk away knowing exactly what the AI engines say about you right now. That baseline is the honest starting point for any GEO work worth doing."
+      }
+    ]
+  }
+]
