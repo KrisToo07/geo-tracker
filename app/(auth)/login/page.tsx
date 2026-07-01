@@ -34,7 +34,7 @@ export default function LoginPage() {
   async function handleGoogle() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}/api/auth/callback` },
+      options: { redirectTo: `${window.location.origin}/auth/callback` },
     })
     if (error) setError('Google sign-in isn’t available yet — please use email.')
   }
