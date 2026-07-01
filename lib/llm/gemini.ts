@@ -1,4 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { buildScanPrompt } from './prompt';
 
 let _genAI: GoogleGenerativeAI | null = null;
 
@@ -17,6 +18,6 @@ export async function queryGemini(keyword: string): Promise<string> {
     model: 'gemini-2.5-flash',
     systemInstruction: GEMINI_SYSTEM,
   });
-  const result = await model.generateContent(keyword);
+  const result = await model.generateContent(buildScanPrompt(keyword));
   return result.response.text();
 }

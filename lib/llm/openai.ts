@@ -1,4 +1,5 @@
 import OpenAI from 'openai';
+import { buildScanPrompt } from './prompt';
 
 let _client: OpenAI | null = null;
 
@@ -18,7 +19,7 @@ export async function queryOpenAI(keyword: string): Promise<string> {
     model: 'gpt-4o',
     messages: [
       { role: 'system', content: SYSTEM_PROMPT },
-      { role: 'user', content: keyword },
+      { role: 'user', content: buildScanPrompt(keyword) },
     ],
     max_tokens: 800,
     temperature: 0.3,

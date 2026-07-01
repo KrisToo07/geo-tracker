@@ -1,13 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getRouteSupabase, getAdminSupabase } from '@/lib/supabase/route-client'
-import { runScan, ScanResultRow } from '@/lib/llm'
+import { runScan, aggregateScores, ScanResultRow } from '@/lib/llm'
 import { PLANS } from '@/lib/stripe/plans'
-
-function avg(rows: ScanResultRow[], platform: string): number {
-  const filtered = rows.filter(r => r.platform === platform)
-  if (!filtered.length) return 0
-  return filtered.reduce((s, r) => s + r.score, 0) / filtered.length
-}
 
 type RouteContext = { params: { brandId: string } }
 
@@ -86,12 +80,14 @@ export async function POST(_req: NextRequest, { params }: RouteContext) {
       return NextResponse.json({ error: 'Scan failed during LLM processing. Please try again.' }, { status: 502 })
     }
 
-    // Compute aggregate scores
-    const openaiScore = avg(scanResults, 'openai')
-    const perplexityScore = avg(scanResults, 'perplexity')
-    const geminiScore = avg(scanResults, 'gemini')
-    const visibilityScore = (openaiScore + perplexityScore + geminiScore) / 3
-    const totalMentions = scanResults.filter(r => r.brand_mentioned).length
+    // Compute aggregate scores (errored providers are excluded, not counted as 0)
+    const {
+      openai: openaiScore,
+      perplexity: perplexityScore,
+      gemini: geminiScore,
+      visibility: visibilityScore,
+      totalMentions,
+    } = aggregateScores(scanResults)
 
     // Persist scan_results rows
     if (scanResults.length > 0) {

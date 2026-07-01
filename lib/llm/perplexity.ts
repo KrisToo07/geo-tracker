@@ -1,5 +1,7 @@
-const PERPLEXITY_SYSTEM_PROMPT = `You are a helpful assistant answering questions about products, services, and brands. 
-Be comprehensive and mention specific brands, companies, and tools when relevant. 
+import { buildScanPrompt } from './prompt';
+
+const PERPLEXITY_SYSTEM_PROMPT = `You are a helpful assistant answering questions about products, services, and brands.
+Be comprehensive and mention specific brands, companies, and tools when relevant.
 Provide balanced, informative responses.`;
 
 export async function queryPerplexity(keyword: string): Promise<string> {
@@ -13,7 +15,7 @@ export async function queryPerplexity(keyword: string): Promise<string> {
       model: 'sonar',
       messages: [
         { role: 'system', content: PERPLEXITY_SYSTEM_PROMPT },
-        { role: 'user', content: keyword },
+        { role: 'user', content: buildScanPrompt(keyword) },
       ],
       max_tokens: 800,
       temperature: 0.3,

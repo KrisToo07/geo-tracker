@@ -1,13 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getAdminSupabase } from '@/lib/supabase/route-client'
-import { runScan, ScanResultRow } from '@/lib/llm'
+import { runScan, aggregateScores, ScanResultRow } from '@/lib/llm'
 import { PLANS } from '@/lib/stripe/plans'
-
-function avg(rows: ScanResultRow[], platform: string): number {
-  const filtered = rows.filter(r => r.platform === platform)
-  if (!filtered.length) return 0
-  return filtered.reduce((s, r) => s + r.score, 0) / filtered.length
-}
 
 // GET /api/cron/daily-scan — called by Vercel Cron with Authorization: Bearer <CRON_SECRET>
 export async function GET(req: NextRequest) {
@@ -77,11 +71,13 @@ export async function GET(req: NextRequest) {
           throw llmErr
         }
 
-        const openaiScore = avg(scanResults, 'openai')
-        const perplexityScore = avg(scanResults, 'perplexity')
-        const geminiScore = avg(scanResults, 'gemini')
-        const visibilityScore = (openaiScore + perplexityScore + geminiScore) / 3
-        const totalMentions = scanResults.filter(r => r.brand_mentioned).length
+        const {
+          openai: openaiScore,
+          perplexity: perplexityScore,
+          gemini: geminiScore,
+          visibility: visibilityScore,
+          totalMentions,
+        } = aggregateScores(scanResults)
 
         if (scanResults.length > 0) {
           const rows = scanResults.map(r => ({
