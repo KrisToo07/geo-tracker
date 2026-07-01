@@ -10,7 +10,7 @@ export async function queryPerplexity(keyword: string): Promise<string> {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: 'llama-3.1-sonar-large-128k-online',
+      model: 'sonar',
       messages: [
         { role: 'system', content: PERPLEXITY_SYSTEM_PROMPT },
         { role: 'user', content: keyword },
