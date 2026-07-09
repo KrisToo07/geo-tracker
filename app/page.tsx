@@ -12,6 +12,9 @@ export default function LandingPage() {
           <span className="font-bold text-lg">GEO Tracker</span>
         </div>
         <div className="flex items-center gap-4">
+          <Link href="/audit" className="text-indigo-300 hover:text-indigo-200 text-sm font-medium transition-colors">
+            Done-for-you Audit
+          </Link>
           <Link href="/login" className="text-zinc-400 hover:text-zinc-50 text-sm transition-colors">
             Log in
           </Link>

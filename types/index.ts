@@ -93,6 +93,8 @@ export interface ScanResult {
   competitors_mentioned: string[];
   excerpt: string | null;
   raw_response: string | null;
+  cited: boolean;
+  cited_sources: string[];
   score: number;
   created_at: string;
   // joined
@@ -134,6 +136,10 @@ export interface MentionScoreResult {
   competitorsMentioned: string[];
   excerpt: string;
   score: number;
+  /** Brand's own domain appeared among the answer's sources (engine citations or inline URLs). */
+  cited: boolean;
+  citedSources: string[];
+  totalSources: number;
 }
 
 export interface LLMQueryResult {

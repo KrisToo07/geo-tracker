@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { buildScanPrompt } from './prompt';
+import { LLMReply } from './types';
 
 let _genAI: GoogleGenerativeAI | null = null;
 
@@ -13,11 +14,25 @@ function getGenAI(): GoogleGenerativeAI {
 const GEMINI_SYSTEM = `You are a helpful assistant answering questions about products, services, and brands. 
 Be comprehensive and mention specific brands when relevant. Provide balanced, informative responses.`;
 
-export async function queryGemini(keyword: string): Promise<string> {
+export async function queryGemini(keyword: string): Promise<LLMReply> {
   const model = getGenAI().getGenerativeModel({
     model: 'gemini-2.5-flash',
     systemInstruction: GEMINI_SYSTEM,
   });
   const result = await model.generateContent(buildScanPrompt(keyword));
-  return result.response.text();
+  const response = result.response;
+  const text = response.text();
+
+  // If grounding metadata is present (search-grounded responses), collect source URIs.
+  const citations: string[] = [];
+  const candidates: any[] = (response as any).candidates ?? [];
+  for (const cand of candidates) {
+    const chunks = cand?.groundingMetadata?.groundingChunks ?? [];
+    for (const ch of chunks) {
+      const uri = ch?.web?.uri;
+      if (typeof uri === 'string') citations.push(uri);
+    }
+  }
+
+  return { text, citations: Array.from(new Set(citations)) };
 }

@@ -1,5 +1,6 @@
 import OpenAI from 'openai';
 import { buildScanPrompt } from './prompt';
+import { LLMReply } from './types';
 
 let _client: OpenAI | null = null;
 
@@ -14,7 +15,7 @@ const SYSTEM_PROMPT = `You are a helpful assistant answering questions about pro
 Be comprehensive and mention specific brands, companies, and tools when relevant to the question. 
 Provide balanced, informative responses that help users make decisions.`;
 
-export async function queryOpenAI(keyword: string): Promise<string> {
+export async function queryOpenAI(keyword: string): Promise<LLMReply> {
   const response = await getClient().chat.completions.create({
     model: 'gpt-4o',
     messages: [
@@ -24,5 +25,7 @@ export async function queryOpenAI(keyword: string): Promise<string> {
     max_tokens: 800,
     temperature: 0.3,
   });
-  return response.choices[0]?.message?.content || '';
+  // Chat Completions has no web grounding, so no engine-level citations —
+  // any URLs the model writes inline are extracted by the scorer instead.
+  return { text: response.choices[0]?.message?.content || '', citations: [] };
 }

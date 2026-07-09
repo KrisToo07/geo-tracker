@@ -104,9 +104,17 @@ export async function POST(_req: NextRequest, { params }: RouteContext) {
         competitors_mentioned: r.competitors_mentioned,
         excerpt: r.response_text?.slice(0, 300) ?? null,
         raw_response: r.raw_response,
+        cited: r.cited,
+        cited_sources: r.cited_sources,
         score: r.score,
       }))
-      const { error: resultsError } = await adminSupabase.from('scan_results').insert(rows)
+      let { error: resultsError } = await adminSupabase.from('scan_results').insert(rows)
+      // Graceful fallback: if the citation columns don't exist yet (migration 002
+      // not applied), strip them and retry so scans keep working.
+      if (resultsError && /cited/i.test(resultsError.message ?? '')) {
+        const legacyRows = rows.map(({ cited, cited_sources, ...rest }) => rest)
+        ;({ error: resultsError } = await adminSupabase.from('scan_results').insert(legacyRows))
+      }
       if (resultsError) console.error('[scan] Failed to insert scan_results:', resultsError)
     }
 

@@ -2,6 +2,7 @@ import { queryOpenAI } from './openai';
 import { queryPerplexity } from './perplexity';
 import { queryGemini } from './gemini';
 import { scoreMentions } from './scorer';
+import { LLMReply } from './types';
 
 export interface ScanInput {
   brand: { id: string; name: string; website?: string | null; aliases?: string[] };
@@ -19,11 +20,13 @@ export interface ScanResultRow {
   sentiment: 'positive' | 'neutral' | 'negative';
   competitors_mentioned: string[];
   raw_response: string;
+  cited: boolean;               // brand's own domain among the answer's sources
+  cited_sources: string[];
   score: number;
   error: boolean;              // true = the LLM call failed (NOT the same as "not mentioned")
 }
 
-const PROVIDERS: { platform: ScanResultRow['platform']; fn: (k: string) => Promise<string> }[] = [
+const PROVIDERS: { platform: ScanResultRow['platform']; fn: (k: string) => Promise<LLMReply> }[] = [
   { platform: 'openai', fn: queryOpenAI },
   { platform: 'perplexity', fn: queryPerplexity },
   { platform: 'gemini', fn: queryGemini },
@@ -52,21 +55,26 @@ export async function runScan({ brand, keywords, competitors }: ScanInput): Prom
   const scanOne = async (
     keyword: { id: string; text: string },
     platform: ScanResultRow['platform'],
-    fn: (k: string) => Promise<string>,
+    fn: (k: string) => Promise<LLMReply>,
   ): Promise<ScanResultRow> => {
     try {
-      const response = await withRetry(() => fn(keyword.text));
-      const s = scoreMentions(brand.name, brandAliases, competitorNames, response);
+      const reply = await withRetry(() => fn(keyword.text));
+      const s = scoreMentions(brand.name, brandAliases, competitorNames, reply.text, {
+        brandWebsite: brand.website,
+        engineCitations: reply.citations,
+      });
       return {
         keyword_id: keyword.id,
         platform,
         prompt: keyword.text,
-        response_text: response,
+        response_text: reply.text,
         brand_mentioned: s.mentioned,
         mention_rank: s.position,
         sentiment: s.sentiment,
         competitors_mentioned: s.competitorsMentioned,
-        raw_response: response,
+        raw_response: reply.text,
+        cited: s.cited,
+        cited_sources: s.citedSources,
         score: s.score,
         error: false,
       };
@@ -83,6 +91,8 @@ export async function runScan({ brand, keywords, competitors }: ScanInput): Prom
         sentiment: 'neutral',
         competitors_mentioned: [],
         raw_response: '',
+        cited: false,
+        cited_sources: [],
         score: 0,
         error: true,
       };

@@ -93,9 +93,17 @@ export async function GET(req: NextRequest) {
             competitors_mentioned: r.competitors_mentioned,
             excerpt: r.response_text?.slice(0, 300) ?? null,
             raw_response: r.raw_response,
+            cited: r.cited,
+            cited_sources: r.cited_sources,
             score: r.score,
           }))
-          await db.from('scan_results').insert(rows)
+          {
+            const { error: insErr } = await db.from('scan_results').insert(rows)
+            if (insErr && /cited/i.test(insErr.message ?? '')) {
+              const legacyRows = rows.map(({ cited, cited_sources, ...rest }) => rest)
+              await db.from('scan_results').insert(legacyRows)
+            }
+          }
         }
 
         await Promise.all([

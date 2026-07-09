@@ -62,6 +62,7 @@ export function MentionTable({ results }: Props) {
               <th className="text-left px-4 py-3 text-zinc-400 font-medium">Keyword</th>
               <th className="text-left px-4 py-3 text-zinc-400 font-medium">LLM</th>
               <th className="text-center px-4 py-3 text-zinc-400 font-medium">Mentioned</th>
+              <th className="text-center px-4 py-3 text-zinc-400 font-medium">Cited</th>
               <th className="text-center px-4 py-3 text-zinc-400 font-medium">Position</th>
               <th className="text-left px-4 py-3 text-zinc-400 font-medium">Sentiment</th>
               <th className="text-center px-4 py-3 text-zinc-400 font-medium">Score</th>
@@ -71,7 +72,7 @@ export function MentionTable({ results }: Props) {
           <tbody>
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={7} className="text-center py-8 text-zinc-500">No results</td>
+                <td colSpan={8} className="text-center py-8 text-zinc-500">No results</td>
               </tr>
             )}
             {filtered.map(r => (
@@ -90,6 +91,18 @@ export function MentionTable({ results }: Props) {
                       <span className="text-green-400 font-bold">✓</span>
                     ) : (
                       <span className="text-red-400">✗</span>
+                    )}
+                  </td>
+                  <td className="px-4 py-3 text-center">
+                    {r.cited ? (
+                      <span
+                        className="text-indigo-400 font-bold"
+                        title={(r.cited_sources ?? []).join('\n') || 'Your site appeared as a source'}
+                      >
+                        🔗
+                      </span>
+                    ) : (
+                      <span className="text-zinc-600">—</span>
                     )}
                   </td>
                   <td className="px-4 py-3 text-center text-zinc-400">
@@ -123,7 +136,7 @@ export function MentionTable({ results }: Props) {
                 </tr>
                 {expandedId === r.id && r.excerpt && (
                   <tr key={`${r.id}-expanded`} className="bg-zinc-900/30">
-                    <td colSpan={7} className="px-4 py-3 text-xs text-zinc-300 italic border-b border-zinc-800/50">
+                    <td colSpan={8} className="px-4 py-3 text-xs text-zinc-300 italic border-b border-zinc-800/50">
                       "{r.excerpt}"
                     </td>
                   </tr>
