@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getRouteSupabase } from '@/lib/supabase/route-client'
 import Papa from 'papaparse'
+import { enforceRateLimit, RULES } from '@/lib/security/guard'
 
 // GET /api/export/mentions?brandId=xxx[&scanId=yyy]
 // Returns a CSV file of scan_results for the given brand (optionally filtered by scan)
@@ -15,6 +16,10 @@ export async function GET(req: NextRequest) {
     if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
+
+    // Bulk data egress: cap it so a stolen session can't quietly drain the account.
+    const limited = enforceRateLimit(req, 'export', RULES.export, user.id)
+    if (limited) return limited
 
     const { searchParams } = req.nextUrl
     const brandId = searchParams.get('brandId')
@@ -109,6 +114,6 @@ export async function GET(req: NextRequest) {
     })
   } catch (err: any) {
     console.error('[GET /api/export/mentions]', err)
-    return NextResponse.json({ error: err.message ?? 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

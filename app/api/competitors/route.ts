@@ -43,7 +43,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ competitors })
   } catch (err: any) {
     console.error('[GET /api/competitors]', err)
-    return NextResponse.json({ error: err.message ?? 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
@@ -120,6 +120,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ competitor }, { status: 201 })
   } catch (err: any) {
     console.error('[POST /api/competitors]', err)
-    return NextResponse.json({ error: err.message ?? 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

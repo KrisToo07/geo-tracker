@@ -25,6 +25,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# build/deploy logs -- these were untracked but NOT ignored, so a `git add -A` would have
+# committed them. They routinely capture env-var names and provider output, and are exactly
+# the kind of file a secret leaks into.
+*.log
+
 # local env files
 .env*.local
 
