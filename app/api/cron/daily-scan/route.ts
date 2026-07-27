@@ -132,6 +132,6 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ message: 'Daily scan cron completed', ...results })
   } catch (err: any) {
     console.error('[cron/daily-scan] Fatal error:', err)
-    return NextResponse.json({ error: err.message ?? 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

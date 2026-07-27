@@ -78,6 +78,6 @@ export async function GET(_req: NextRequest, { params }: RouteContext) {
     })
   } catch (err: any) {
     console.error('[GET /api/scans/[scanId]]', err)
-    return NextResponse.json({ error: err.message ?? 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

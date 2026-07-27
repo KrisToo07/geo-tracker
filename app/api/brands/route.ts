@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { z } from 'zod'
 import { getRouteSupabase } from '@/lib/supabase/route-client'
+import { parseBody, shortText, mediumText, httpUrl } from '@/lib/security/guard'
 
 // GET /api/brands — list all brands for the authenticated user
 export async function GET(_req: NextRequest) {
@@ -31,7 +33,7 @@ export async function GET(_req: NextRequest) {
     return NextResponse.json({ brands })
   } catch (err: any) {
     console.error('[GET /api/brands]', err)
-    return NextResponse.json({ error: err.message ?? 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
@@ -48,12 +50,20 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const body = await req.json()
-    const { name, website, description, scan_frequency = 'weekly' } = body
-
-    if (!name || typeof name !== 'string' || name.trim().length === 0) {
-      return NextResponse.json({ error: 'Brand name is required' }, { status: 400 })
-    }
+    // These values are interpolated into LLM prompts, so the length caps are a cost and
+    // prompt-injection control, not just tidiness. `website` is restricted to http/https to
+    // keep javascript:/data:/file: out of stored records.
+    const { data: input, error: invalid } = await parseBody(
+      req,
+      z.object({
+        name: shortText,
+        website: httpUrl.optional().nullable(),
+        description: mediumText.optional().nullable(),
+        scan_frequency: z.enum(['daily', 'weekly', 'monthly']).default('weekly'),
+      }),
+    )
+    if (invalid) return invalid
+    const { name, website, description, scan_frequency } = input
 
     // Enforce plan brand limits
     const { data: profile } = await supabase
@@ -96,6 +106,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ brand }, { status: 201 })
   } catch (err: any) {
     console.error('[POST /api/brands]', err)
-    return NextResponse.json({ error: err.message ?? 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

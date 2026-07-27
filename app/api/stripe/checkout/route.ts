@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getRouteSupabase } from '@/lib/supabase/route-client'
+import { getRouteSupabase, getAdminSupabase } from '@/lib/supabase/route-client'
 import { stripe } from '@/lib/stripe/client'
 import { PLANS } from '@/lib/stripe/plans'
+import { enforceRateLimit, RULES } from '@/lib/security/guard'
 
 // POST /api/stripe/checkout — create a Stripe Checkout session for plan upgrade
 export async function POST(req: NextRequest) {
@@ -12,6 +13,10 @@ export async function POST(req: NextRequest) {
     if (authError || !user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
+
+    // Payment surface: a real user upgrades a handful of times, not dozens per minute.
+    const limited = enforceRateLimit(req, 'checkout', RULES.billing, user.id)
+    if (limited) return limited
 
     const body = await req.json()
     // Accept both `plan` and `planId` for compatibility
@@ -49,7 +54,14 @@ export async function POST(req: NextRequest) {
         metadata: { user_id: user.id },
       })
       customerId = customer.id
-      await supabase.from('profiles').update({ stripe_customer_id: customerId }).eq('id', user.id)
+      // Written with the admin client on purpose. `stripe_customer_id` is the key the Stripe
+      // webhook matches on to decide whose plan to upgrade, so users must not be able to write
+      // it themselves -- setting it to someone else's customer id would redirect that person's
+      // paid upgrade. Migration 003 revokes this column from the `authenticated` role.
+      await getAdminSupabase()
+        .from('profiles')
+        .update({ stripe_customer_id: customerId })
+        .eq('id', user.id)
     }
 
     const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
@@ -69,6 +81,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ url: session.url })
   } catch (err: any) {
     console.error('[POST /api/stripe/checkout]', err)
-    return NextResponse.json({ error: err.message ?? 'Internal server error' }, { status: 500 })
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

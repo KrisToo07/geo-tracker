@@ -34,7 +34,8 @@ export async function PATCH(req: NextRequest, { params }: RouteContext) {
 
     return NextResponse.json({ keyword })
   } catch (err: any) {
-    return NextResponse.json({ error: err.message ?? 'Internal server error' }, { status: 500 })
+    console.error('[api/keywords/[keywordId]]', err)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
@@ -55,6 +56,7 @@ export async function DELETE(_req: NextRequest, { params }: RouteContext) {
 
     return NextResponse.json({ success: true })
   } catch (err: any) {
-    return NextResponse.json({ error: err.message ?? 'Internal server error' }, { status: 500 })
+    console.error('[api/keywords/[keywordId]]', err)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }

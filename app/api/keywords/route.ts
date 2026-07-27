@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { z } from 'zod'
 import { getRouteSupabase } from '@/lib/supabase/route-client'
+import { parseBody, shortText, uuid } from '@/lib/security/guard'
 
 // GET /api/keywords?brandId=xxx
 export async function GET(req: NextRequest) {
@@ -22,7 +24,8 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({ keywords })
   } catch (err: any) {
-    return NextResponse.json({ error: err.message ?? 'Internal server error' }, { status: 500 })
+    console.error('[api/keywords]', err)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
@@ -33,15 +36,26 @@ export async function POST(req: NextRequest) {
     const { data: { user }, error: authError } = await supabase.auth.getUser()
     if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-    const body = await req.json()
-    // Accept both camelCase (from KeywordManager) and snake_case
-    const brandId: string = body.brandId ?? body.brand_id
-    const text: string = body.text
-    const category: string = body.category ?? 'general'
+    // `text` becomes an LLM query, so the length cap is a cost control as much as validation.
+    // Both key spellings stay accepted -- KeywordManager sends camelCase, other callers snake.
+    const { data: input, error: invalid } = await parseBody(
+      req,
+      z
+        .object({
+          brandId: uuid.optional(),
+          brand_id: uuid.optional(),
+          text: shortText,
+          category: z.string().trim().max(50).default('general'),
+        })
+        .refine((v) => v.brandId ?? v.brand_id, {
+          message: 'brandId is required',
+          path: ['brandId'],
+        }),
+    )
+    if (invalid) return invalid
 
-    if (!brandId || !text || typeof text !== 'string' || text.trim().length === 0) {
-      return NextResponse.json({ error: 'brandId and text are required' }, { status: 400 })
-    }
+    const brandId = (input.brandId ?? input.brand_id) as string
+    const { text, category } = input
 
     const { data: brand } = await supabase
       .from('brands').select('id').eq('id', brandId).eq('user_id', user.id).single()
@@ -72,6 +86,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ keyword }, { status: 201 })
   } catch (err: any) {
-    return NextResponse.json({ error: err.message ?? 'Internal server error' }, { status: 500 })
+    console.error('[api/keywords]', err)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
