@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "security:validate": "node scripts/test-validation.mjs",
+    "security:audit-db": "node scripts/audit-db-security.mjs"
   },
   "dependencies": {
     "@google/generative-ai": "^0.16.0",
